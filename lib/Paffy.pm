@@ -6,7 +6,7 @@ our $VERSION = '0.01';
 
 =head1 NAME
 
-Paffy - Module abstract (<= 44 characters) goes here
+Paffy - POPO Application Framework
 
 =head1 SYNOPSIS
 
