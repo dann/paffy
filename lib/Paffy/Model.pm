@@ -1,6 +1,6 @@
 package Paffy::Model;
 use Moose;
-extends qw/Paffy::Class/;
+use base qw/Paffy::Class/;
 
 no Moose;
 __PACKAGE__->meta->make_immutable();

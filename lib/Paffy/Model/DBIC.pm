@@ -6,15 +6,13 @@ has 'schema'       => ( is => 'rw' );
 has 'slave_schema' => ( is => 'rw' );
 
 sub model {
-    my $self       = shift;
-    my $model_name = shift;
+    my ( $self, $model_name ) = @_;
     my $name       = $self->_get_resultset_name($model_name);
     return $self->schema->resultset($name);
 }
 
 sub slave_model {
-    my $self       = shift;
-    my $model_name = shift;
+    my ( $self, $model_name ) = @_;
     my $name       = $self->_get_resultset_name($model_name);
     return $self->slave_schema->resultset($name);
 }

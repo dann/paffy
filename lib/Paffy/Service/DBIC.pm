@@ -1,6 +1,6 @@
 package Paffy::Service::DBIC;
 use Moose;
-
+use base qw/Paffy::Service/;
 has 'db' => (is => 'rw');
 
 sub model {

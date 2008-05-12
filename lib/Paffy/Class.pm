@@ -1,9 +1,10 @@
 package Paffy::Class;
-
+use attributes();
 use Moose;
-extends qw/Paffy::Component Paffy::AttrContainer/;
+use base qw/Paffy::Component Paffy::AttrContainer/;
 
 no Moose;
+
 __PACKAGE__->meta->make_immutable();
 
 1;

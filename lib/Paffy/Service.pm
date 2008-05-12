@@ -1,7 +1,7 @@
 package Paffy::Service;
 
 use Moose;
-extends 'Paffy::Model';
+use base qw/Paffy::Model/;
 
 1;
 
