@@ -11,6 +11,7 @@ requires 'MooseX::App::Cmd';
 requires 'File::Spec';
 requires 'Path::Class';
 requires 'Class::Inspector';
+requires 'CHI';
 
 build_requires 'Test::More';
 use_test_base;
