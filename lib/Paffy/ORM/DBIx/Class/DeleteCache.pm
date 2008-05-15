@@ -1,4 +1,4 @@
-package Paffy::DBIx::Class::DeleteCache;
+package Paffy::ORM::DBIx::Class::DeleteCache;
 use strict;
 use warnings;
 use base qw(DBIx::Class Class::Data::Inheritable);

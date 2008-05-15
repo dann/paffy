@@ -1,4 +1,4 @@
-package Paffy::DBIx::Class::Schema;
+package Paffy::ORM::DBIx::Class::Schema;
 use strict;
 use warnings;
 

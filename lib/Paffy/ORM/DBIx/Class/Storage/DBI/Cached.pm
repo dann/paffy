@@ -1,4 +1,4 @@
-package Paffy::DBIx::Class::Storage::DBI::Cached;
+package Paffy::ORM::DBIx::Class::Storage::DBI::Cached;
 use strict;
 use base qw(DBIx::Class::Storage::DBI);
 our $CACHE_EXPIRE = 60 * 60;

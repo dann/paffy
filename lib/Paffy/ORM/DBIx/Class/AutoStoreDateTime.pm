@@ -1,4 +1,4 @@
-package Paffy::DBIx::Class::AutoStoreDateTime;
+package Paffy::ORM::DBIx::Class::AutoStoreDateTime;
 use strict;
 use base qw(DBIx::Class);
 use Paffy::Date;
