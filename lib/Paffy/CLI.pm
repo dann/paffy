@@ -1,6 +1,9 @@
 package Paffy::CLI;
 use Moose;
-extends qw(MooseX::App::Cmd);
+
+BEGIN {
+    extends qw(MooseX::App::Cmd);
+}
 
 no Moose;
 

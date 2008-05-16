@@ -1,6 +1,8 @@
 package Paffy::CLI::Command::example;
 use Moose;
-extends qw(Paffy::CLI::Command);
+BEGIN {
+    extends qw(Paffy::CLI::Command);
+}
 
 has open => (
     isa           => "Str",

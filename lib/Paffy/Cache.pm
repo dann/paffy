@@ -1,5 +1,4 @@
 package Paffy::Cache;
-use CHI;
 use Moose;
 
 has 'cache' => (

@@ -1,5 +1,7 @@
 package Paffy::Model::JobQueue;
 use Moose;
-extends 'Paffy::Class';
+BEGIN {
+    extends qw(Paffy::Model);
+}
 
 1;

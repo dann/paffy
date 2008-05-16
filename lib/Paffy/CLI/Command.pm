@@ -1,6 +1,8 @@
 package Paffy::CLI::Command;
 use Moose;
-extends qw(MooseX::App::Cmd::Command);
+BEGIN {
+    extends qw(MooseX::App::Cmd::Command);
+}
 
 has 'config' => (
     is      => 'rw',
