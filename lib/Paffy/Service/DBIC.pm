@@ -4,7 +4,10 @@ use Moose;
 BEGIN {
     extends qw(Paffy::Service);
 }
+
 has '_db' => ( is => 'rw' );
+
+no Moose;
 
 sub model {
     my ( $self, $model_name ) = @_;
