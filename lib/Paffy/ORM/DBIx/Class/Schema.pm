@@ -20,7 +20,7 @@ sub master {
     my $schema       = $class->connect( @{$connect_info} );
 
     $schema->default_resultset_attributes(
-        { cache_object => $class->Cache } );
+        { cache_object => $class->cache } );
 
     return $schema;
 }
