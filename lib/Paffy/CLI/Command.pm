@@ -8,9 +8,7 @@ has 'config' => (
     is      => 'rw',
 );
 
-has 'schema' => (
-    is      => 'rw',
-);
+with 'Paffy::Role::Model::DBIC';
 
 __PACKAGE__->meta->make_immutable;
 

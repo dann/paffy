@@ -4,14 +4,12 @@ use base qw/Paffy::Service/;
 has 'db' => (is => 'rw');
 
 sub model {
-    my $self       = shift;
-    my $model_name = shift;
+    my ($self, $model_name)  = @_;
     $self->db->model($model_name);
 }
 
 sub slave_model {
-    my $self       = shift;
-    my $model_name = shift;
+    my ($self, $model_name)  = @_;
     $self->db->slave_model($model_name);
 }
 
