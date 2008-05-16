@@ -1,16 +1,19 @@
 package Paffy::Service::DBIC;
 use Moose;
-use base qw/Paffy::Service/;
-has 'db' => (is => 'rw');
+
+BEGIN {
+    extends qw(Paffy::Service);
+}
+has '_db' => ( is => 'rw' );
 
 sub model {
-    my ($self, $model_name)  = @_;
-    $self->db->model($model_name);
+    my ( $self, $model_name ) = @_;
+    $self->_db->model($model_name);
 }
 
 sub slave_model {
-    my ($self, $model_name)  = @_;
-    $self->db->slave_model($model_name);
+    my ( $self, $model_name ) = @_;
+    $self->_db->slave_model($model_name);
 }
 
 __PACKAGE__->meta->make_immutable;

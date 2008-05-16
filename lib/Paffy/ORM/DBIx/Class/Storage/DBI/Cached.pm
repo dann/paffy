@@ -1,10 +1,10 @@
 package Paffy::ORM::DBIx::Class::Storage::DBI::Cached;
 use strict;
 use base qw(DBIx::Class::Storage::DBI Class::Accessor::Fast);
+
+# FIXME: to be configurable
 our $CACHE_EXPIRE = 60 * 60;
 
-# set cache before use this class
-# another solution? 
 __PACKAGE__->mk_accessors(qw/cache/);
 
 sub select_single {
