@@ -67,7 +67,7 @@ sub storage_class {
     my $self = shift;
     my $storage_class;
     if ( Paffy::ORM::DBIx::Class::Schema->cache ) {
-        $storage_class = 'DBIx::Class::Storage::DBI::Cached';
+        $storage_class = 'Paffy::ORM::DBIx::Class::Storage::DBI::Cached';
     }
     else {
         $storage_class = $self->storage_type;
