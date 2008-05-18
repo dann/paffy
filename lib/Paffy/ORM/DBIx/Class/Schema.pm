@@ -27,7 +27,7 @@ sub master {
 
 sub slave {
     my $class = shift;
-
+    return unless $class->config;
     my $connect_info = $class->config->{'Model::DBIC::Slave'}{'connect_info'};
     my $schema       = $class->connect( @{$connect_info} );
 
@@ -50,8 +50,8 @@ sub connection {
 
     # This call my cache function?
     # FIXME
-    $storage->cache( Paffy::ORM::DBIx::Class::Schema->cache )
-        if Paffy::ORM::DBIx::Class::Schema->cache;
+    $storage->cache( __PACKAGE__->cache )
+        if __PACKAGE__->cache;
     $storage->{__cache_prefix} = ref $self;
     $storage->connect_info( \@info );
 
