@@ -1,7 +1,7 @@
 package Paffy::ORM::DBIx::Class::DeleteCache;
 use strict;
 use warnings;
-use base qw(DBIx::Class Class::Data::Inheritable);
+use base qw(DBIx::Class Class::Data::Accessor);
 
 __PACKAGE__->mk_classaccessors(qw/cache/);
 
