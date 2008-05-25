@@ -6,6 +6,7 @@
 \.old$
 ^blib/
 ^pm_to_blib
+^\.git
 ^MakeMaker-\d
 \.gz$
 \.cvsignore
