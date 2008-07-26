@@ -22,5 +22,4 @@ sub _get_resultset_name {
     return $name;
 }
 
-
 1;

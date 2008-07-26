@@ -16,6 +16,12 @@ sub run {
     print $self->open;
 }
 
+=head1 NAME
+
+Paffy::CLI::Command::example - example command
+
+=cut
+
 1;
 
 __END__
