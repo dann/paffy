@@ -18,8 +18,17 @@ has 'retry_count' => (
 
 sub name {
     my $self = shift;
-    my ($name) = decamelize(ref $self) =~ /(\w+)$/;
+    my ($name) = decamelize(ref $self);
+    $name = $self->prefix . $name;
     return $name;
+}
+
+sub prefix {
+    if ($ENV{PAFFY_DEV}) {
+        return 'dev-';
+    } else {
+        return '';
+    }
 }
 
 sub execute {

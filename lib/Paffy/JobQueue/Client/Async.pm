@@ -1,9 +1,8 @@
-package Paffy::JobQueue::Server;
+package Paffy::JobQueue::Client::Async;
 # TODO: Change the class name
 
 use Moose;
 use MooseX::Method;
-use Moose::Autobox;
 use Gearman::Client::Async;
 use Gearman::Task;
 use Storable qw( freeze );
@@ -47,7 +46,6 @@ sub post_event_loop_checker {
     my $self = shift;
     return sub {
         for ( @{ $self->tasks } ) {
-            warn 'task isnt finished';
             return 1 unless $_->is_finished;
         }
         $_->close() for @{ $self->client->{job_servers} };
@@ -63,8 +61,9 @@ sub setup {
     Danga::Socket->DebugLevel(3);
     Danga::Socket->SetLoopTimeout(250);
 
-    #  TODDO:
+    #  TODO:
     # Danga::Socket->SetPostLoopCallback( $self->post_event_loop_checker );
+    # FIXME: Danga::Socket->WatchedSockets is 1. Why?
 }
 
 sub _setup_client {
@@ -97,7 +96,7 @@ method add_task => named(
                     on_retry    => sub { 
                         my $retry_count = shift;
                         $task->on_retry($retry_count); 
-                    }
+                    },
                 }
             );
             $self->client->add_task($gtask);

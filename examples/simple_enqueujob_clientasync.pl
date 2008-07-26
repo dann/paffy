@@ -2,11 +2,11 @@
 use strict;
 use warnings;
 use lib 'lib';
-use Paffy::JobQueue::Client;
+use Paffy::JobQueue::Client::Async;
 use Paffy::JobQueue::Task::Echo;
 use Paffy::JobQueue::Task::Sleep;
 
-my $client  = Paffy::JobQueue::Client->new;
+my $client  = Paffy::JobQueue::Client::Async->new;
 
 main();
 
