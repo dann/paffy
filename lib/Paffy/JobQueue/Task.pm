@@ -7,7 +7,7 @@ with 'Paffy::Role::Configurable';
 has 'timeout' => (
     is => 'rw',
     isa => 'Int',
-    default => 60,
+    default => 600,
 );
 
 has 'retry_count' => (

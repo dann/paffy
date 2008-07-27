@@ -32,7 +32,7 @@ method register_function => named(
     my $task = $args->{task};
 
     $self->worker->register_function(
-        $task->name => sub {
+        $task->name, $task->timeout ,sub {
             my $job  = shift;
             my $arg = thaw( $job->arg );
             $task->execute( $arg );
