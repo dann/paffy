@@ -1,4 +1,5 @@
 package Paffy::JobQueue::Client;
+
 # TODO: Rename to Paffy::JobQueue::Gearman::Client ?
 
 use Moose;
@@ -56,11 +57,16 @@ method add_task => named(
     my ( $self, $args ) = @_;
     my $task = $args->{task};
 
-    $self->client->dispatch_background(
+    my $gtask = Gearman::Task->new(
         $task->name,
         \freeze( $args->{args} ),
-        +{},
+        +{  on_fail => sub {
+                $task->on_fail;
+            },
+        }
     );
+
+    $self->client->dispatch_background($gtask);
 };
 
 1;
