@@ -1,8 +1,8 @@
 package Paffy::Class;
-use attributes();
 use Moose;
+
 BEGIN {
-    extends qw(Paffy::Component Paffy::AttrContainer);
+    extends qw(Paffy::Component);
 }
 
 no Moose;
