@@ -10,12 +10,13 @@ use UNIVERSAL::require;
 sub rebless { bless $_[1], $_[0] }
 
 sub parse {
-    my($class, $format, $date) = @_;
+    my ( $class, $format, $date ) = @_;
 
     my $module;
-    if (ref $format) {
+    if ( ref $format ) {
         $module = $format;
-    } else {
+    }
+    else {
         $module = "DateTime::Format::$format";
         $module->require or die $@;
     }
@@ -25,17 +26,17 @@ sub parse {
 }
 
 sub strptime {
-    my($class, $pattern, $date) = @_;
+    my ( $class, $pattern, $date ) = @_;
     Encode::_utf8_on($pattern);
-    my $format = DateTime::Format::Strptime->new(pattern => $pattern);
-    $class->parse($format, $date);
+    my $format = DateTime::Format::Strptime->new( pattern => $pattern );
+    $class->parse( $format, $date );
 }
 
 sub now {
-    my($class, %opt) = @_;
+    my ( $class, %opt ) = @_;
     my $self = $class->SUPER::now();
 
-    my $tz = $opt{timezone} ||'local';
+    my $tz = $opt{timezone} || 'local';
     $self->set_time_zone($tz);
 
     $self;
@@ -43,17 +44,18 @@ sub now {
 
 sub from_epoch {
     my $class = shift;
-    my %p = @_ == 1 ? (epoch => $_[0]) : @_;
+    my %p = @_ == 1 ? ( epoch => $_[0] ) : @_;
     $class->SUPER::from_epoch(%p);
 }
 
 sub format {
-    my($self, $format) = @_;
+    my ( $self, $format ) = @_;
 
     my $module;
-    if (ref $format) {
+    if ( ref $format ) {
         $module = $format;
-    } else {
+    }
+    else {
         $module = "DateTime::Format::$format";
         $module->require or die $@;
     }
@@ -64,9 +66,7 @@ sub format {
 sub set_time_zone {
     my $self = shift;
 
-    eval {
-        $self->SUPER::set_time_zone(@_);
-    };
+    eval { $self->SUPER::set_time_zone(@_); };
     if ($@) {
         $self->SUPER::set_time_zone('UTC');
     }

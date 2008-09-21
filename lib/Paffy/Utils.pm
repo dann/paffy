@@ -56,28 +56,30 @@ sub home {
     my $class = shift;
 
     # make an $INC{ $key } style string from the class name
-    (my $file = "$class.pm") =~ s{::}{/}g;
+    ( my $file = "$class.pm" ) =~ s{::}{/}g;
 
     if ( my $inc_entry = $INC{$file} ) {
         {
+
             # look for an uninstalled Paffy app
 
             # find the @INC entry in which $file was found
-            (my $path = $inc_entry) =~ s/$file$//;
+            ( my $path = $inc_entry ) =~ s/$file$//;
             my $home = dir($path)->absolute->cleanup;
 
             # pop off /lib and /blib if they're there
             $home = $home->parent while $home =~ /b?lib$/;
 
             # only return the dir if it has a Makefile.PL or Build.PL
-            if (-f $home->file("Makefile.PL") or -f $home->file("Build.PL")) {
+            if ( -f $home->file("Makefile.PL") or -f $home->file("Build.PL") )
+            {
 
                 # clean up relative path:
                 # MyApp/script/.. -> MyApp
 
                 my $dir;
                 my @dir_list = $home->dir_list();
-                while (($dir = pop(@dir_list)) && $dir eq '..') {
+                while ( ( $dir = pop(@dir_list) ) && $dir eq '..' ) {
                     $home = dir($home)->parent->parent;
                 }
 
@@ -86,10 +88,11 @@ sub home {
         }
 
         {
+
             # look for an installed Paffy app
 
             # trim the .pm off the thing ( Foo/Bar.pm -> Foo/Bar/ )
-            ( my $path = $inc_entry) =~ s/\.pm$//;
+            ( my $path = $inc_entry ) =~ s/\.pm$//;
             my $home = dir($path)->absolute->cleanup;
 
             # return if if it's a valid directory
@@ -130,13 +133,16 @@ sub ensure_class_loaded {
     croak "Malformed class Name $class"
         if $class =~ m/[^\w:]/;
 
-    croak "ensure_class_loaded should be given a classname, not a filename ($class)"
+    croak
+        "ensure_class_loaded should be given a classname, not a filename ($class)"
         if $class =~ m/\.pm$/;
 
-    return if !$opts->{ ignore_loaded }
-        && Class::Inspector->loaded( $class ); # if a symbol entry exists we don't load again
+    return
+        if !$opts->{ignore_loaded}
+            && Class::Inspector->loaded($class)
+    ;    # if a symbol entry exists we don't load again
 
-    # this hack is so we don't overwrite $@ if the load did not generate an error
+ # this hack is so we don't overwrite $@ if the load did not generate an error
     my $error;
     {
         local $@;
@@ -163,21 +169,22 @@ sub merge_hashes {
     my ( $lefthash, $righthash ) = @_;
 
     return $lefthash unless defined $righthash;
-    
+
     my %merged = %$lefthash;
     for my $key ( keys %$righthash ) {
-        my $right_ref = ( ref $righthash->{ $key } || '' ) eq 'HASH';
-        my $left_ref  = ( ( exists $lefthash->{ $key } && ref $lefthash->{ $key } ) || '' ) eq 'HASH';
-        if( $right_ref and $left_ref ) {
-            $merged{ $key } = merge_hashes(
-                $lefthash->{ $key }, $righthash->{ $key }
-            );
+        my $right_ref = ( ref $righthash->{$key} || '' ) eq 'HASH';
+        my $left_ref
+            = ( ( exists $lefthash->{$key} && ref $lefthash->{$key} ) || '' )
+            eq 'HASH';
+        if ( $right_ref and $left_ref ) {
+            $merged{$key}
+                = merge_hashes( $lefthash->{$key}, $righthash->{$key} );
         }
         else {
-            $merged{ $key } = $righthash->{ $key };
+            $merged{$key} = $righthash->{$key};
         }
     }
-    
+
     return \%merged;
 }
 
