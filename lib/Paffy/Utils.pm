@@ -1,8 +1,9 @@
 package Paffy::Utils;
-
 use strict;
+use warnings;
+
 use File::Spec;
-use Path::Class;
+use Path::Class qw(file dir);
 use Class::Inspector;
 use Carp qw/croak/;
 
@@ -188,4 +189,32 @@ sub merge_hashes {
     return \%merged;
 }
 
+sub path_to {
+    my (@path) = @_;
+    my $path = dir( &home, @path );
+    if ( -d $path ) {
+        return $path;
+    }
+    else {
+        return file( &home, @path );
+    }
+}
+
+sub env_value {
+    my ( $class, $key ) = @_;
+
+    $key = uc($key);
+    my @prefixes = ( class2env($class), 'CATALYST' );
+
+    for my $prefix (@prefixes) {
+        if ( defined( my $value = $ENV{"${prefix}_${key}"} ) ) {
+            return $value;
+        }
+    }
+
+    return;
+}
+
 1;
+
+__END__
