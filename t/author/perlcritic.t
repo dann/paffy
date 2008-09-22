@@ -6,7 +6,7 @@ if (! $ENV{TEST_CRITIC}) {
 } else {
     eval {
         require Test::Perl::Critic;
-        Test::Perl::Critic->import( -profile => 't/perlcriticrc');
+        Test::Perl::Critic->import( -profile => 't/author/perlcriticrc');
     };  
     plan skip_all => "Test::Perl::Critic is not installed." if $@; 
     all_critic_ok('lib');

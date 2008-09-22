@@ -14,6 +14,8 @@ requires 'Class::Inspector';
 requires 'CHI';
 
 build_requires 'Test::More';
+build_requires 'Test::Base';
+build_requires 'Test::Class';
 use_test_base;
 auto_include;
 WriteAll;
