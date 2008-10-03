@@ -1,10 +1,10 @@
-package TestApp::Web::Model::Service;
+package MyApp::Web::Model::Service;
 use strict;
 use warnings;
 use base 'Catalyst::Model::MultiAdaptor';
 
 __PACKAGE__->config(
-    package   => 'TestApp::Service',
+    package   => 'MyApp::Service',
     config    => {
         'SomeClass' => {
             id => 1,

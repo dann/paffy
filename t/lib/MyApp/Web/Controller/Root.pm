@@ -1,4 +1,4 @@
-package TestApp::Web::Controller::Root;
+package MyApp::Web::Controller::Root;
 use strict;
 use warnings;
 

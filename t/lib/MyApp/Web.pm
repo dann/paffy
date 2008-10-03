@@ -1,4 +1,4 @@
-package TestApp::Web;
+package MyApp::Web;
 use strict;
 use warnings;
 

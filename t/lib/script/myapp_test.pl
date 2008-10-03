@@ -5,7 +5,7 @@ use warnings;
 
 use FindBin;
 use lib "$FindBin::Bin/..";
-use Catalyst::Test 'TestApp::Web';
+use Catalyst::Test 'MyApp::Web';
 
 print request($ARGV[0])->content . "\n";
 

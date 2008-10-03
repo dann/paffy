@@ -1,4 +1,4 @@
-package TestApp::Service::AnotherClass;
+package MyApp::Service::AnotherClass;
 use Moose;
 extends 'Paffy::Model';
 

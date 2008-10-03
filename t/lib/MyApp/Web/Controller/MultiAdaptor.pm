@@ -1,4 +1,4 @@
-package TestApp::Web::Controller::MultiAdaptor;
+package MyApp::Web::Controller::MultiAdaptor;
 use strict;
 use warnings;
 
