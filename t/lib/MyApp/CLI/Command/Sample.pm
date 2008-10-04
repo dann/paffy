@@ -1,7 +1,7 @@
 package MyApp::CLI::Command::Sample;
 use Moose;
 BEGIN {
-    extends qw(Paffy::CLI::Command);
+    extends qw(MyApp::CLI::Command);
 }
 
 =head1 NAME

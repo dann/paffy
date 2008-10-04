@@ -1,9 +1,8 @@
 package MyApp::CLI::Command;
 use Moose;
-# with 'Paffy::Role::Model::DBIC';
+extends qw(Paffy::CLI::Command);
 
-# can change it to MooseX::ConfigFromFile?
-# with 'Paffy::Role::Configurable'
+# with 'Paffy::Role::Model::DBIC';
 
 no Moose;
 
